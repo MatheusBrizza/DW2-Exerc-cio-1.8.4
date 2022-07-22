@@ -86,6 +86,20 @@ export default function App() {
     setInputTarefa('');
   };
 
+  const buscarTarefasMelissa = async () => {
+    const url = 'https://68jb68bukl.execute-api.sa-east-1.amazonaws.com/tasks/';
+    const resultado = await axios.get(url, {
+      params: { user: 'Melissa' },
+    });
+    return resultado.data.items;
+  };
+
+  React.useEffect(() => {
+    buscarTarefasMelissa().then((retornoTarefas) => {
+      setTarefas(retornoTarefas);
+    });
+  });
+
   const handleOnClick = (index) => {
     console.log(index);
     setTarefas(
@@ -127,7 +141,11 @@ export default function App() {
             <ul>
               {tarefas.map((tarefa, index) => (
                 <li>
-                  <input className="tarefa_conteudo" disabled value={tarefa} />
+                  <input
+                    className="tarefa_conteudo"
+                    disabled
+                    value={tarefa.description}
+                  />
                   <button
                     className="btn btn_excluir"
                     onClick={() => handleOnClick(index)}
