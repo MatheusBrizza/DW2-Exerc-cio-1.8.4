@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.titulo {
+  font-family: sans-serif;
+}
+
+.conteudo {
+  width: 80%;
+}
+
+.btn {
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.btn_adicionar {
+  border: 0.5px solid blue;
+}
+
+.btn_adicionar:hover {
+  color: white;
+  background-color: blue;
+}
+
+.btn_excluir {
+  border: 0.5px solid red;
+}
+
+.btn_excluir:hover {
+  color: white;
+  background-color: red;
+}
+
+.tarefa_box {
+  display: flex;
+  flex-direction: column;
+}
+
+#tarefa {
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0 10px;
+}
+
+.tarefa_conteudo {
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0 10px;
+}
+
+ul {
+  list-style-type: none;
+
+  padding: 0;
+}
+
+li {
+  display: flex;
+  gap: 10px;
+}
