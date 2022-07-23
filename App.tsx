@@ -24,7 +24,7 @@ async function buscarPorUsuario(user) {
 }
 
 //resultado = await buscarPorUsuario('seumathias');
-
+/*
 async function inserirTarefa(user, description) {
   const DTO = {
     user: user,
@@ -35,7 +35,7 @@ async function inserirTarefa(user, description) {
   return resultado.data;
 }
 // resultado = await inserirTarefa('Melissa', 'Entregar exercício');
-
+*/
 async function alterarTarefa(id, user, description) {
   const dto = {
     user: user,
@@ -67,7 +67,7 @@ async function deleteByUser(user) {
   const deletar = await axios.delete(url, configs);
 }
 
-inserirTarefa('Matheus', 'minha tarefa');
+//inserirTarefa('Matheus', 'minha tarefa');
 
 console.log(resultado);
 
