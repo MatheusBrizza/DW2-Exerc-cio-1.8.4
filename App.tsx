@@ -86,25 +86,37 @@ export default function App() {
     setInputTarefa('');
   };
 
-  const buscarTarefasMelissa = async () => {
+  const buscarTarefasMatheus = async () => {
     const url = 'https://68jb68bukl.execute-api.sa-east-1.amazonaws.com/tasks/';
     const resultado = await axios.get(url, {
-      params: { user: 'Melissa' },
+      params: { user: 'Matheus' },
     });
     return resultado.data.items;
   };
 
   React.useEffect(() => {
-    buscarTarefasMelissa().then((retornoTarefas) => {
+    buscarTarefasMatheus().then((retornoTarefas) => {
       setTarefas(retornoTarefas);
     });
   });
 
-  const handleOnClick = (index) => {
+  const handleOnClickExcluir = (index) => {
     console.log(index);
     setTarefas(
       tarefas.filter((tarefa, indexOriginal) => indexOriginal !== index)
     );
+  };
+
+  /*  mesma coisa que acima apenas feita de forma diferente
+  const handleOnClickExcluir = (index) => {
+    const novasTarefas = tarefas.filter((tarefa, _index) => _index !== index)  
+    );
+    return setTarefas(novasTarefas)
+  };*/
+
+  const deletarTarefasById = async (id) => {
+    const resultado = await axios.delete(`${url}${id}`);
+    return resultado;
   };
 
   return (
@@ -148,7 +160,7 @@ export default function App() {
                   />
                   <button
                     className="btn btn_excluir"
-                    onClick={() => handleOnClick(index)}
+                    onClick={() => handleOnClickExcluir(index)}
                   >
                     Excluir
                   </button>
