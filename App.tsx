@@ -93,19 +93,20 @@ export default function App() {
     });
     return resultado.data.items;
   };
-
+  /*
   React.useEffect(() => {
     buscarTarefasMatheus().then((retornoTarefas) => {
       setTarefas(retornoTarefas);
     });
-  });
-
+  }, []);
+*/
+  /* esse aqui apenas exclui da memória
   const handleOnClickExcluir = (index) => {
     console.log(index);
     setTarefas(
       tarefas.filter((tarefa, indexOriginal) => indexOriginal !== index)
     );
-  };
+  };*/
 
   /*  mesma coisa que acima apenas feita de forma diferente
   const handleOnClickExcluir = (index) => {
@@ -113,10 +114,13 @@ export default function App() {
     );
     return setTarefas(novasTarefas)
   };*/
-
+  // este exclui do banco de dados
   const deletarTarefasById = async (id) => {
-    const resultado = await axios.delete(`${url}${id}`);
-    return resultado;
+    await axios.delete(`${url}${id}`);
+    buscarTarefasMatheus().then((retornoTarefas) => {
+      setTarefas(retornoTarefas);
+      console.log('foi');
+    });
   };
 
   return (
@@ -160,7 +164,7 @@ export default function App() {
                   />
                   <button
                     className="btn btn_excluir"
-                    onClick={() => handleOnClickExcluir(index)}
+                    onClick={() => deletarTarefasById(tarefa.id)}
                   >
                     Excluir
                   </button>
