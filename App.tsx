@@ -93,13 +93,13 @@ export default function App() {
     });
     return resultado.data.items;
   };
-  /*
+
   React.useEffect(() => {
     buscarTarefasMatheus().then((retornoTarefas) => {
       setTarefas(retornoTarefas);
     });
   }, []);
-*/
+
   /* esse aqui apenas exclui da memória
   const handleOnClickExcluir = (index) => {
     console.log(index);
@@ -114,6 +114,7 @@ export default function App() {
     );
     return setTarefas(novasTarefas)
   };*/
+
   // este exclui do banco de dados
   const deletarTarefasById = async (id) => {
     await axios.delete(`${url}${id}`);
